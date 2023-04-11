@@ -1,0 +1,44 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  background-color: #282a37;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh
+}
+
+.logIn {
+  color: #4d7baa;
+  text-decoration: none;
+}
+
+.InputForm:focus-within {
+  border: 2px solid rgb(60, 128, 188);
+}
+
+.InputForm:focus-within h4 {
+  color: rgb(60, 128, 188);
+}
+
+input:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
+.divBtn {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+button:disabled {
+  background-color: rgb(239 239 239 / 35%);
+  color: #e6d5d569;
+}
+
+.containerBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
