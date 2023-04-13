@@ -49,6 +49,11 @@ export const AuthProvider = ({ children }: IClientProviderProps) => {
     const [contact, setContact] = useState([]);
     const idClient = window.localStorage.getItem("@clientId");
     const tokenClient = window.localStorage.getItem("@clientToken");
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleTogglePassword = () => {
+        setShowPassword(!showPassword);
+    }
 
 
 
@@ -155,7 +160,7 @@ export const AuthProvider = ({ children }: IClientProviderProps) => {
             setClientcont(resp.data.contacts);
         }
         getClientInfo();
-    }, []);
+    }, [idClient]);
     return (
         <AuthContext.Provider
             value={{
@@ -171,7 +176,9 @@ export const AuthProvider = ({ children }: IClientProviderProps) => {
                 tokenClient,
                 editContact,
                 setClientcont,
-                navigate
+                navigate,
+                showPassword,
+                handleTogglePassword
             }}
         >
             {children}

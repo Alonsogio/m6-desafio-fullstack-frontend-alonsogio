@@ -1,6 +1,6 @@
 import { BsFillPersonVcardFill } from "react-icons/bs";
 import { MdMail } from "react-icons/md";
-import { AiFillEye } from "react-icons/ai";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { TiPhone } from "react-icons/ti";
 import styled from "styled-components";
 
@@ -15,6 +15,12 @@ export const MailIcon = styled(MdMail)`
 export const EyeIcon = styled(AiFillEye)`
   font-size: 23px;
   color: #a9acb3;
+  cursor: pointer
+`;
+export const OcultEyeIcon = styled(AiFillEyeInvisible)`
+  font-size: 23px;
+  color: #a9acb3;
+  cursor: pointer
 `;
 export const PhoneIcon = styled(TiPhone)`
   font-size: 23px;

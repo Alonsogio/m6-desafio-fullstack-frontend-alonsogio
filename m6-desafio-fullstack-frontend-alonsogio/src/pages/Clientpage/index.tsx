@@ -5,6 +5,7 @@ import { AuthContext } from "../../contexts/ClientPageContext";
 import { AnyObject } from "yup";
 import { ModalCreate } from "../../components/Modal/modalCreate";
 import { ModalEdit } from "../../components/Modal/modalEdit";
+import { Navigate } from "react-router-dom";
 
 export const Clientpage = () => {
 
@@ -18,40 +19,43 @@ export const Clientpage = () => {
         clientcont,
         renderModal,
         handleClick,
-        navigate
+        navigate,
+        tokenClient
     } = useContext<AnyObject>(AuthContext);
 
     return (
         <>
-            <DivMain className="main">
-                {renderModal}
-                <HeaderStyled>
-                    <div onClick={() => exit()}>
-                        < LogoutIcon />
-                    </div>
-                </HeaderStyled>
-                <body>
-                    <div className="welcome">
-                        <FontH1>Bem vindo(a), <FontP>{client.fullName}</FontP></FontH1>
-                    </div>
-                    <DivContainer className="DivContainer">
-                        <DivFontBtn className="divFontBtn">
-                            <div>
-                                <FontH2>Contacts</FontH2>
-                            </div>
-                            <div>
-                                <BtnCreate onClick={() =>
-                                    handleClick(<ModalCreate />)}>Create</BtnCreate>
-                            </div>
-                        </DivFontBtn>
-                        <UlContacts className="contactsul">
-                            {clientcont.length == 0 ? (<>
-                                <FontH2>Voce ainda nao possui contatos</FontH2>
-                            </>) : (<ModalEdit />)}
-                        </UlContacts>
-                    </DivContainer>
-                </body>
-            </DivMain>
+            {tokenClient ? (<>
+                <DivMain className="main">
+                    {renderModal}
+                    <HeaderStyled>
+                        <div onClick={() => exit()}>
+                            < LogoutIcon />
+                        </div>
+                    </HeaderStyled>
+                    <body>
+                        <div className="welcome">
+                            <FontH1>Bem vindo(a), <FontP>{client.fullName}</FontP></FontH1>
+                        </div>
+                        <DivContainer className="DivContainer">
+                            <DivFontBtn className="divFontBtn">
+                                <div>
+                                    <FontH2>Contacts</FontH2>
+                                </div>
+                                <div>
+                                    <BtnCreate onClick={() =>
+                                        handleClick(<ModalCreate />)}>Create</BtnCreate>
+                                </div>
+                            </DivFontBtn>
+                            <UlContacts className="contactsul">
+                                {clientcont.length == 0 ? (<>
+                                    <FontH2>Voce ainda nao possui contatos</FontH2>
+                                </>) : (<ModalEdit />)}
+                            </UlContacts>
+                        </DivContainer>
+                    </body>
+                </DivMain>
+            </>) : (<Navigate to="/" replace />)}
         </>
     )
 };

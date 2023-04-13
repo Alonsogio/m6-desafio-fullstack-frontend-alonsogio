@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { PersonCard, MailIcon, EyeIcon, PhoneIcon, Errorspan, Pontospan, BodyContainer } from "./style";
+import { PersonCard, MailIcon, EyeIcon, PhoneIcon, Errorspan, Pontospan, BodyContainer, OcultEyeIcon } from "./style";
 import { FontH1, FontH2, FontH4, FontP } from "../../components/Fonts/fonts";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from 'react-hook-form';
@@ -16,7 +16,9 @@ export const Registerpage = () => {
 
   const {
     handlerRegister,
-    loading
+    loading,
+    showPassword,
+    handleTogglePassword
   } = useContext<AnyObject>(AuthContext);
 
   const {
@@ -71,12 +73,12 @@ export const Registerpage = () => {
             <DivInputIcon className="inputIcon">
               <div>
                 <InputPlace
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   {...register("password")}
                 ></InputPlace>
               </div>
-              <div>
-                <EyeIcon />
+              <div onClick={handleTogglePassword}>
+                {showPassword ? <OcultEyeIcon /> : <EyeIcon />}
               </div>
             </DivInputIcon>
             <div>
